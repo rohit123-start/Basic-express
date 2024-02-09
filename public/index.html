@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Socket.IO Chat</title>
+</head>
+<body>
+  <div id="messages"></div>
+  <input type="text" id="messageInput" placeholder="Type your message...">
+  <button id="sendButton">Send</button>
+  <button id="connectButton">Connect</button>
+  <button id="disconnectButton">Disconnect</button>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    let socket;
+
+    // Connect button event handler
+    document.getElementById('connectButton').addEventListener('click', () => {
+      socket = io();
+
+      // Socket.IO connect event handler
+      socket.on("connect", () => {
+        console.log("Connected to Socket.IO server");
+      });
+
+      // Socket.IO message event handler
+      socket.on("message", (message) => {
+        handleMessage(message);
+      });
+    });
+
+    // Disconnect button event handler
+    document.getElementById('disconnectButton').addEventListener('click', () => {
+      if (socket && socket.connected) {
+        socket.disconnect();
+        clearMessages();
+      } else {
+        console.log('Socket.IO connection is not open');
+      }
+    });
+
+    // Send button event handler
+    document.getElementById('sendButton').addEventListener('click', () => {
+      if (socket && socket.connected) {
+        sendMessage();
+      } else {
+        console.log('Socket.IO connection is not open');
+      }
+    });
+
+    document.getElementById('messageInput').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        if (socket && socket.connected) {
+          sendMessage();
+        } else {
+          console.log('Socket.IO connection is not open');
+        }
+      }
+    });
+
+    function sendMessage() {
+      const messageInput = document.getElementById('messageInput');
+      const message = messageInput.value.trim();
+      if (message !== '') {
+        socket.emit('message', message);
+        messageInput.value = '';
+      }
+    }
+
+    function handleMessage(message) {
+      const messagesDiv = document.getElementById('messages');
+      const messageElement = document.createElement('div');
+      messageElement.textContent = message;
+      messagesDiv.appendChild(messageElement);
+    }
+
+    function clearMessages() {
+      const messagesDiv = document.getElementById('messages');
+      messagesDiv.innerHTML = '';
+    };
+  </script>
+</body>
+</html>
