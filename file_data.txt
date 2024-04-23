@@ -1,0 +1,21 @@
+
+destination:'/Basic-Express/public/uploads'
+encoding:'7bit'
+fieldname:'file'
+filename:'file-1712048797227.png'
+mimetype:'image/png'
+originalname:'sample.png'
+path:
+'\\Basic-Express\\public\\uploads\\file-1712048797227.png'
+size:1452
+
+
+
+"token": "", 
+ "entityId": "", 
+ "programId": "", 
+ "referenceType": "", 
+ "referenceNo": "", 
+ "file": "", 
+ "base64File": "" 
+ "customerName": "" 
