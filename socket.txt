@@ -1,0 +1,13 @@
+1)io server is connected because it encapsulated the http request you are hitting
+
+2)Basically on page refresh on browser it runs the code inside io logic which was not possible before
+
+
+public\uploads
+
+D:\Basic-Express\public\uploads
+
+
+/upload
+
+/insert
