@@ -14,6 +14,8 @@ app.use(imageRoutes)
 const server = http.createServer(app);
 const io = new Server(server);
 
+console.log("hii")
+
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
