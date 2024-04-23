@@ -5,6 +5,7 @@ import routes from './auth/auth.routes.js';
 import axios from 'axios';
 import fs from 'fs'
 import imageRoutes from './image/image.routes.js';
+import './mailer.js'
 
 const app = express();
 app.use(routes)
@@ -13,8 +14,6 @@ app.use(imageRoutes)
 
 const server = http.createServer(app);
 const io = new Server(server);
-
-console.log("hii")
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
