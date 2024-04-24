@@ -16,6 +16,8 @@ imageController.upload = (req,res) => {
 
 }
 
+console.log("third branch")
+
 imageController.send = async (req,res) => {
 
     const fileBuffer = fs.readFileSync('public/sample.png');
