@@ -5,7 +5,6 @@ import routes from './auth/auth.routes.js';
 import axios from 'axios';
 import fs from 'fs'
 import imageRoutes from './image/image.routes.js';
-import './mailer.js'
 
 const app = express();
 app.use(routes)
